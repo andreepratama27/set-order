@@ -57,6 +57,9 @@ const styles = StyleSheet.create({
   },
   bottomBtnWrapper: {
     width: "100%"
+  },
+  bottomWrapper: {
+    borderWidth: 1
   }
 });
 

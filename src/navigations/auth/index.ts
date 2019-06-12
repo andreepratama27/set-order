@@ -4,9 +4,9 @@ import {
 } from "react-navigation";
 import { createAppContainer } from "@react-navigation/native";
 
-import Account from "modules/client/account";
-import Home from "modules/client/home";
-import Order from "modules/client/order";
+import Account from "modules/account";
+import Home from "modules/home";
+import Order from "modules/order";
 
 const AppNavigator = createBottomTabNavigator({
   Home: {
