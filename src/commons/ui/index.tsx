@@ -13,7 +13,9 @@ export const Divider = styled.View`
 export const Column = styled.View`
   flex-direction: ${(props: any) => (props.isColumn ? "column" : "row")};
   justify-content: ${(props: any) =>
-    props.spaceBetween ? "space-between" : "flex-start"};
+    props.justifyContent ? props.justifyContent : "flex-start"};
+  align-items: ${(props: any) =>
+    props.alignItems ? props.alignItems : "flex-start"};
 `;
 
 export const List = styled.TouchableOpacity`

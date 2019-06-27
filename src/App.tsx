@@ -11,7 +11,7 @@ export default class App extends Component<Props> {
     return (
       <>
         <StatusBar barStyle="dark-content" backgroundColor={Colors.dark} />
-        <GuestNavigator />
+        <AuthNavigator />
       </>
     );
   }
