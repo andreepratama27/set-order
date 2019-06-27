@@ -89,7 +89,7 @@ const styles = ScaledSheet.create({
       height: 5
     },
     shadowColor: Colors.gray,
-    shadowOpacity: 0.4
+    shadowOpacity: 0.3
   },
   img: {
     width: "100%",
