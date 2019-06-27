@@ -1,67 +1,80 @@
 import * as React from "react";
-import { StyleSheet } from "react-native";
-import {
-  Heading,
-  Title,
-  Subtitle,
-  View,
-  Button,
-  Text,
-  Card,
-  Image,
-  Caption
-} from "@shoutem/ui";
-import { NavigationScreenProp } from "react-navigation";
+import { View, SafeAreaView, Text, Image, ImageBackground } from "react-native";
 
-type LandingProps = {
-  navigation: NavigationScreenProp<any, any>;
-};
+import { Title } from "commons/text";
+import { Button } from "commons/button";
+import { Spacing, Column } from "commons/ui";
 
-function Landing(props: LandingProps) {
+import { Colors } from "styles";
+import styles from "./styles";
+
+const bg = require("../../assets/img/bg.png");
+const logo = require("../../assets/img/logo2x.png");
+
+function Landing(props: any) {
   return (
-    <View style={styles.container}>
-      <Heading>SetOrder</Heading>
-      <Title>Ordering made simple</Title>
-      <Subtitle>Dining out or busy restaurant lovers</Subtitle>
+    <SafeAreaView style={styles.full}>
+      <ImageBackground source={bg} style={styles.container}>
+        <View style={styles.overlay} />
+        <View style={styles.menuWrapper}>
+          <View style={styles.logoWrapper}>
+            <Image source={logo} style={styles.images} />
+          </View>
 
-      <View>
-        <Button
-          styleName="secondary"
-          onPress={() => props.navigation.navigate("Home")}
-        >
-          <Text>Browse Restaurants</Text>
-        </Button>
-      </View>
+          <View style={styles.description}>
+            <Title
+              color={Colors.light}
+              size={24}
+              isBold
+              style={styles.textCenter}
+            >
+              Ordering made simple
+            </Title>
+            <Spacing marginBottom={15} />
+            <View style={styles.descriptionInner}>
+              <Title color={Colors.light} size={20} style={styles.textCenter}>
+                Dining out for busy restaurant lovers
+              </Title>
+            </View>
+          </View>
+        </View>
 
-      <View
-        styleName="horizontal space-between"
-        style={styles.bottomBtnWrapper}
-      >
-        <Button onPress={() => props.navigation.navigate("Signup")}>
-          <Text>Sign up</Text>
-        </Button>
-        <Button onPress={() => props.navigation.navigate("Login")}>
-          <Text>Login</Text>
-        </Button>
-      </View>
-    </View>
+        <View style={styles.bottomWrapper}>
+          <Button
+            bgColor={Colors.warning}
+            onPress={() => props.navigation.navigate("Signin")}
+          >
+            <Title isBold>Browse Restaurant</Title>
+          </Button>
+
+          <Spacing marginBottom={15} />
+
+          <Column>
+            <Button
+              bgColor={"transparent"}
+              style={styles.btnTransparent}
+              onPress={() => props.navigation.navigate("Signup")}
+            >
+              <Title isBold color={Colors.light}>
+                Sign Up
+              </Title>
+            </Button>
+
+            <Button
+              bgColor={"transparent"}
+              style={styles.btnTransparent}
+              onPress={() => props.navigation.navigate("Login")}
+            >
+              <Title isBold color={Colors.light}>
+                Login
+              </Title>
+            </Button>
+          </Column>
+        </View>
+      </ImageBackground>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 15,
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  bottomBtnWrapper: {
-    width: "100%"
-  },
-  bottomWrapper: {
-    borderWidth: 1
-  }
-});
 
 Landing.navigationOptions = {
   header: null

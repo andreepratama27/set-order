@@ -5,7 +5,8 @@
       {
         "root": ["./src/"],
         "alias": {
-          "modules": ["./src/modules/"]
+          "modules": ["./src/modules/"],
+          "commons": ["./src/commons"]
         }
       }
     ]

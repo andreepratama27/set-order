@@ -76,6 +76,31 @@
 		<string>Rubik-Medium.ttf</string>
 		<string>Rubik-MediumItalic.ttf</string>
 		<string>Rubik-Regular.ttf</string>
+		<string>Roboto-Black.ttf</string>
+		<string>Roboto-BlackItalic.ttf</string>
+		<string>Roboto-Bold.ttf</string>
+		<string>Roboto-BoldItalic.ttf</string>
+		<string>Roboto-Italic.ttf</string>
+		<string>Roboto-Light.ttf</string>
+		<string>Roboto-LightItalic.ttf</string>
+		<string>Roboto-Medium.ttf</string>
+		<string>Roboto-MediumItalic.ttf</string>
+		<string>Roboto-Regular.ttf</string>
+		<string>Roboto-Thin.ttf</string>
+		<string>Roboto-ThinItalic.ttf</string>
+		<string>SF-UI-Display-Thin.otf</string>
+		<string>SFUIText-Bold.ttf</string>
+		<string>SFUIText-BoldItalic.ttf</string>
+		<string>SFUIText-Heavy.ttf</string>
+		<string>SFUIText-HeavyItalic.ttf</string>
+		<string>SFUIText-Light.ttf</string>
+		<string>SFUIText-LightItalic.ttf</string>
+		<string>SFUIText-Medium.ttf</string>
+		<string>SFUIText-MediumItalic.ttf</string>
+		<string>SFUIText-Regular.ttf</string>
+		<string>SFUIText-RegularItalic.ttf</string>
+		<string>SFUIText-Semibold.ttf</string>
+		<string>SFUIText-SemiboldItalic.ttf</string>
 	</array>
 </dict>
 </plist>

@@ -1,43 +1,63 @@
 import React, { Component } from "react";
-import {
-  Icon,
-  Title,
-  View,
-  TextInput,
-  Button,
-  Text,
-  Divider
-} from "@shoutem/ui";
-import { StyleSheet } from "react-native";
+import { View, Text, Image } from "react-native";
+import { ScaledSheet } from "react-native-size-matters";
+
+import { Title, P, Caption } from "commons/text";
+import { Input } from "commons/input";
+import { Spacing } from "commons/ui";
+import { Button } from "commons/button";
+import { Colors } from "styles";
+
+const icon = {
+  facebook: require("../../assets/img/icon-facebook.png"),
+  google: require("../../assets/img/icon-google.png")
+};
 
 function Signup() {
   return (
     <View style={styles.container}>
-      <View styleName="horizontal h-center" style={styles.separator}>
-        <Title>Create your account</Title>
+      <View style={styles.header}>
+        <Title size={22} isBold>
+          Create your account
+        </Title>
+      </View>
+
+      <Input placeholder="Full name" style={styles.input} />
+      <Spacing marginTop={15} />
+
+      <Input placeholder="Email" style={styles.input} />
+      <Spacing marginTop={15} />
+      <Input placeholder="Password" style={styles.input} secureTextEntry />
+
+      <Spacing marginTop={15} />
+
+      <Button bgColor={Colors.warning}>
+        <Title isBold>Sign In</Title>
+      </Button>
+
+      <View style={styles.divider}>
+        <Title color={Colors.text} isBold>
+          OR
+        </Title>
       </View>
 
       <View>
-        <TextInput placeholder="Full name" style={styles.input} />
-        <TextInput placeholder="Email" style={styles.input} />
-        <TextInput placeholder="Password" style={styles.input} />
-        <Button styleName="secondary">
-          <Text>Sign Up</Text>
-        </Button>
-      </View>
-
-      <View style={styles.dividen}>
-        <Text>OR</Text>
-      </View>
-
-      <View>
-        <Button styleName="secondary" style={styles.btn}>
-          <Icon name="facebook" style={styles.icon} />
-          <Text>Continue with Facebook</Text>
+        <Button bgColor={Colors.facebook}>
+          <View style={styles.icon}>
+            <Image source={icon.facebook} />
+          </View>
+          <Title isBold color={Colors.light}>
+            Continue with Facebook
+          </Title>
         </Button>
 
-        <Button styleName="secondary">
-          <Text>Continue with Google</Text>
+        <Spacing marginTop={15} />
+
+        <Button bgColor={"#f7f7f7"}>
+          <View style={styles.icon}>
+            <Image source={icon.google} />
+          </View>
+          <Title isBold>Continue with Google</Title>
         </Button>
       </View>
     </View>
@@ -51,24 +71,29 @@ Signup.navigationOptions = {
   }
 };
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   container: {
     flex: 1,
     padding: 15
   },
   input: {
-    paddingTop: 0,
-    paddingBottom: 0,
-    borderRadius: 4,
-    height: 40,
-    marginBottom: 15,
-    backgroundColor: "#f7f7f7"
+    backgroundColor: Colors.smoke,
+    borderRadius: 4
   },
   separator: {
     marginBottom: 25
   },
+  header: {
+    height: "120@vs",
+    alignItems: "center",
+    justifyContent: "center"
+  },
   btn: {
-    marginBottom: 10
+    borderRadius: 4
+  },
+  btnWithMargin: {
+    marginBottom: 10,
+    borderRadius: 4
   },
   dividen: {
     height: 60,
@@ -78,6 +103,11 @@ const styles = StyleSheet.create({
   icon: {
     position: "absolute",
     left: 10
+  },
+  divider: {
+    height: "60@vs",
+    alignItems: "center",
+    justifyContent: "center"
   }
 });
 

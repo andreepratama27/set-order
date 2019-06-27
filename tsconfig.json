@@ -12,7 +12,10 @@
     "target": "esnext",
     "baseUrl": "src",
     "paths": {
-      "modules/*": ["modules/*"]
+      "commons/*": ["commons/*"],
+      "navigations/*": ["navigations/*"],
+      "modules/*": ["modules/*"],
+      "styles/*": ["styles/*"]
     }
   },
   "exclude": [
