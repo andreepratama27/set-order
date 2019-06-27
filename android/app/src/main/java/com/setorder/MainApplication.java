@@ -3,10 +3,8 @@ package com.setorder;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.reactnative.photoview.PhotoViewPackage;
 import cl.json.RNSharePackage;
 import com.BV.LinearGradient.LinearGradientPackage;
-import com.oblador.vectoricons.VectorIconsPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -26,14 +24,8 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-            new PhotoViewPackage(),
-            new RNSharePackage(),
-            new LinearGradientPackage(),
-            new VectorIconsPackage(),
-            new RNGestureHandlerPackage()
-      );
+      return Arrays.<ReactPackage>asList(new MainReactPackage(), new RNSharePackage(), new LinearGradientPackage(),
+          new RNGestureHandlerPackage());
     }
 
     @Override

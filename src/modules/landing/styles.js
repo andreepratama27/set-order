@@ -19,6 +19,7 @@ export default ScaledSheet.create({
     backgroundColor: Colors.dark
   },
   menuWrapper: {
+    marginTop: "-80@vs",
     flexDirection: "column",
     justifyContent: "space-between",
     height: "250@vs"

@@ -16,6 +16,7 @@ function Landing(props: any) {
     <SafeAreaView style={styles.full}>
       <ImageBackground source={bg} style={styles.container}>
         <View style={styles.overlay} />
+
         <View style={styles.menuWrapper}>
           <View style={styles.logoWrapper}>
             <Image source={logo} style={styles.images} />
@@ -31,6 +32,7 @@ function Landing(props: any) {
               Ordering made simple
             </Title>
             <Spacing marginBottom={15} />
+
             <View style={styles.descriptionInner}>
               <Title color={Colors.light} size={20} style={styles.textCenter}>
                 Dining out for busy restaurant lovers

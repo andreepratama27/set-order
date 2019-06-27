@@ -22,6 +22,8 @@ function Signup() {
         </Title>
       </View>
 
+      <Spacing marginBottom={15} />
+
       <Input placeholder="Full name" style={styles.input} />
       <Spacing marginTop={15} />
 
@@ -84,7 +86,7 @@ const styles = ScaledSheet.create({
     marginBottom: 25
   },
   header: {
-    height: "120@vs",
+    height: "50@vs",
     alignItems: "center",
     justifyContent: "center"
   },
