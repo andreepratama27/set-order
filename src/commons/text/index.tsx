@@ -21,7 +21,7 @@ export const Title = styled.Text`
 `;
 
 export const Caption = styled.Text`
-  font-size: 12px;
+  font-size: ${(props: TextProps) => (props.size ? props.size : "12px")};
   font-family: "SFUIText-Light";
   color: ${(props: TextProps) => (props.color ? props.color : Colors.dark)};
 `;

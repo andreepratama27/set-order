@@ -3,11 +3,17 @@ import {
   Animated,
   Platform,
   StatusBar,
-  StyleSheet,
+  Image,
   Text,
   View,
   RefreshControl
 } from "react-native";
+import { Colors } from "styles";
+import { ScaledSheet } from "react-native-size-matters";
+
+import { Title, Caption } from "commons/text";
+import { Spacing, List, Column } from "commons/ui";
+import { Button } from "commons/button";
 
 const HEADER_MAX_HEIGHT = 300;
 const HEADER_MIN_HEIGHT = Platform.OS === "ios" ? 60 : 73;
@@ -19,7 +25,6 @@ export default class RestaurantDetail extends Component {
 
     this.state = {
       scrollY: new Animated.Value(
-        // iOS has negative initial scroll value because content inset...
         Platform.OS === "ios" ? -HEADER_MAX_HEIGHT : 0
       ),
       refreshing: false
@@ -30,22 +35,7 @@ export default class RestaurantDetail extends Component {
     header: null
   };
 
-  _renderScrollViewContent() {
-    const data = Array.from({ length: 30 });
-    return (
-      <View style={styles.scrollViewContent}>
-        {data.map((_, i) => (
-          <View key={i} style={styles.row}>
-            <Text>{i}</Text>
-          </View>
-        ))}
-      </View>
-    );
-  }
-
   render() {
-    // Because of content inset the scroll value will be negative on iOS so bring
-    // it back to 0.
     const scrollY = Animated.add(
       this.state.scrollY,
       Platform.OS === "ios" ? HEADER_MAX_HEIGHT : 0
@@ -99,11 +89,9 @@ export default class RestaurantDetail extends Component {
                 this.setState({ refreshing: true });
                 setTimeout(() => this.setState({ refreshing: false }), 1000);
               }}
-              // Android offset for RefreshControl
               progressViewOffset={HEADER_MAX_HEIGHT}
             />
           }
-          // iOS offset for RefreshControl
           contentInset={{
             top: HEADER_MAX_HEIGHT
           }}
@@ -111,8 +99,129 @@ export default class RestaurantDetail extends Component {
             y: -HEADER_MAX_HEIGHT
           }}
         >
-          {this._renderScrollViewContent()}
+          <View style={styles.headerTitle}>
+            <Title isBold color={Colors.dark} size={18}>
+              Golden vegetable food
+            </Title>
+            <Spacing marginBottom={5} />
+            <Caption size={14}>Chinese cuisine, Indonesia</Caption>
+            <Spacing marginBottom={5} />
+            <Caption>4.0</Caption>
+          </View>
+
+          <View style={styles.timerSelect}>
+            <Title color={Colors.dark} size={14} isBold>
+              Lunch menu
+            </Title>
+          </View>
+
+          <View style={styles.menuWrapper}>
+            <Column alignItems="center" style={styles.card}>
+              <View style={styles.menuImg}>
+                <Image
+                  source={{ uri: "https://picsum.photos/id/10/2500/1667" }}
+                  style={styles.img}
+                />
+              </View>
+
+              <Spacing marginRight={15} />
+
+              <Column isColumn justifyContent="center">
+                <Title>Burrito chicken special</Title>
+                <Caption style={{ padingRight: 15 }}>
+                  This food consists of wheat tortillas filled with various kind
+                </Caption>
+                <Spacing marginBottom={10} />
+
+                <Column justifyContent={"space-between"}>
+                  <Title isBold color={Colors.dark}>
+                    $13.99
+                  </Title>
+
+                  <Button bgColor={Colors.warning} style={styles.btnSmall}>
+                    <Title>Add</Title>
+                  </Button>
+                </Column>
+              </Column>
+            </Column>
+            <Column alignItems="center" style={styles.card}>
+              <View style={styles.menuImg}>
+                <Image
+                  source={{ uri: "https://picsum.photos/id/10/2500/1667" }}
+                  style={styles.img}
+                />
+              </View>
+
+              <Spacing marginRight={15} />
+
+              <Column isColumn>
+                <Title>Burrito chicken special</Title>
+                <Caption>
+                  This food consists of wheat tortillas filled with various kind
+                </Caption>
+                <Column>
+                  <Title isBold color={Colors.dark}>
+                    $13.99
+                  </Title>
+                  <Button bgColor={Colors.warning} style={styles.btnSmall}>
+                    <Title>Add</Title>
+                  </Button>
+                </Column>
+              </Column>
+            </Column>
+            <Column alignItems="center" style={styles.card}>
+              <View style={styles.menuImg}>
+                <Image
+                  source={{ uri: "https://picsum.photos/id/10/2500/1667" }}
+                  style={styles.img}
+                />
+              </View>
+
+              <Spacing marginRight={15} />
+
+              <Column isColumn>
+                <Title>Burrito chicken special</Title>
+                <Caption style={{ padingRight: 15 }}>
+                  This food consists of wheat tortillas filled with various kind
+                </Caption>
+                <Column>
+                  <Title isBold color={Colors.dark}>
+                    $13.99
+                  </Title>
+                  <Button bgColor={Colors.warning} style={styles.btnSmall}>
+                    <Title>Add</Title>
+                  </Button>
+                </Column>
+              </Column>
+            </Column>
+            <Column alignItems="center" style={styles.card}>
+              <View style={styles.menuImg}>
+                <Image
+                  source={{ uri: "https://picsum.photos/id/10/2500/1667" }}
+                  style={styles.img}
+                />
+              </View>
+
+              <Spacing marginRight={15} />
+
+              <Column isColumn>
+                <Title>Burrito chicken special</Title>
+                <Caption>
+                  This food consists of wheat tortillas filled with various kind
+                </Caption>
+                <Column>
+                  <Title isBold color={Colors.dark}>
+                    $13.99
+                  </Title>
+                  <Button bgColor={Colors.warning} style={styles.btnSmall}>
+                    <Title>Add</Title>
+                  </Button>
+                </Column>
+              </Column>
+            </Column>
+          </View>
         </Animated.ScrollView>
+
         <Animated.View
           pointerEvents="none"
           style={[
@@ -128,9 +237,10 @@ export default class RestaurantDetail extends Component {
                 transform: [{ translateY: imageTranslate }]
               }
             ]}
-            source={{ uri: "https://placehold.it/300x300" }}
+            source={{ uri: "https://picsum.photos/id/10/2500/1667" }}
           />
         </Animated.View>
+
         <Animated.View
           style={[
             styles.bar,
@@ -138,15 +248,13 @@ export default class RestaurantDetail extends Component {
               transform: [{ scale: titleScale }, { translateY: titleTranslate }]
             }
           ]}
-        >
-          <Text style={styles.title}>Title</Text>
-        </Animated.View>
+        />
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   fill: {
     flex: 1
   },
@@ -158,7 +266,9 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    backgroundColor: "#03A9F4",
+    backgroundColor: Colors.light,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.background,
     overflow: "hidden",
     height: HEADER_MAX_HEIGHT
   },
@@ -196,5 +306,38 @@ const styles = StyleSheet.create({
     backgroundColor: "#D3D3D3",
     alignItems: "center",
     justifyContent: "center"
+  },
+  headerTitle: {
+    height: "100@vs",
+    justifyContent: "center",
+    paddingLeft: 15,
+    paddingRight: 15
+  },
+  timerSelect: {
+    backgroundColor: Colors.smoke,
+    padding: 15
+  },
+  menuImg: {
+    width: "70@s",
+    height: "70@vs",
+    justifyContent: "center"
+  },
+  menuWrapper: {
+    padding: 15
+  },
+  img: {
+    width: "100%",
+    height: "100%",
+    alignSelf: "center",
+    borderRadius: 4
+  },
+  card: {
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.background,
+    height: "90@vs"
+  },
+  btnSmall: {
+    width: "40@s",
+    height: "25@vs"
   }
 });
