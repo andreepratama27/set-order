@@ -46,7 +46,7 @@ function Home(props: HomeProps) {
   return (
     <View style={styles.container}>
       <View style={styles.headerSearch}>
-        <TextInput placeholder="Search restaurant" />
+        <Title color={Colors.text}>Search Restaurant</Title>
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -61,7 +61,8 @@ function Home(props: HomeProps) {
 Home.navigationOptions = {
   headerStyle: {
     borderBottomWidth: 1,
-    borderBottomColor: Colors.background
+    borderBottomColor: Colors.background,
+    elevation: 0
   }
 };
 
@@ -70,7 +71,7 @@ const styles = ScaledSheet.create({
     flex: 1
   },
   headerSearch: {
-    height: "40@vs",
+    height: "50@vs",
     alignItems: "center",
     justifyContent: "center",
     borderBottomWidth: 1,
@@ -97,7 +98,12 @@ const styles = ScaledSheet.create({
     borderRadius: 4
   },
   columnWidth: { width: "100%" },
-  columnHeight: { height: "100%" }
+  columnHeight: { height: "100%" },
+  textInput: {
+    fontFamily: "SFUIText-Regular",
+    height: "50@vs",
+    alignSelf: "center"
+  }
 });
 
 export default Home;

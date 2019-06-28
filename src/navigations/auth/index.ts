@@ -7,7 +7,8 @@ import { createAppContainer } from "@react-navigation/native";
 import Account from "modules/account";
 import Home from "modules/home";
 import Order from "modules/order";
-import OrderDetail from "modules/order-detail";
+
+import ProfileDetail from "modules/profile-detail";
 
 import BottomTab from "../BottomTab";
 
@@ -21,39 +22,25 @@ const AppNavigator = createBottomTabNavigator(
       })
     },
     Order: {
-      screen: createStackNavigator(
-        {
-          Order: {
-            screen: Order
-          },
-          OrderDetail: {
-            screen: OrderDetail
-          }
-        },
-        {
-          mode: "modal",
-          transparentCard: true,
-          // defaultNavigationOptions: {
-          //   gesturesEnabled: false
-          // },
-          transitionConfig: () => ({
-            transitionSpec: {
-              duration: 0
-            }
-          })
+      screen: createStackNavigator({
+        Order: {
+          screen: Order
         }
-      )
+      })
     },
     Account: {
       screen: createStackNavigator({
         Account: {
           screen: Account
+        },
+        ProfileDetail: {
+          screen: ProfileDetail
         }
       })
     }
   },
   {
-    initialRouteName: "Home"
+    initialRouteName: "Account"
   }
 );
 

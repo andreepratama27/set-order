@@ -10,7 +10,6 @@ export default class App extends Component<Props> {
   render() {
     return (
       <>
-        <StatusBar barStyle="dark-content" backgroundColor={Colors.dark} />
         <AuthNavigator />
       </>
     );

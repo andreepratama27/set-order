@@ -2,18 +2,119 @@ import React, { Component } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { ScaledSheet } from "react-native-size-matters";
 
-import { Title, Caption } from "commons/text";
+import Modal from "react-native-modal";
+
+import { Title, TitleHeader, Caption } from "commons/text";
 import { Button } from "commons/button";
 import { Column, Spacing } from "commons/ui";
 
 import { Colors } from "styles";
 
+const icon = { close: require("../../assets/img/close.png") };
+
 function Card(props: any) {
+  const [modal, setModal] = React.useState(false);
+
   return (
-    <TouchableOpacity
-      style={styles.card}
-      onPress={() => props.navigation.navigate("OrderDetail")}
-    >
+    <TouchableOpacity style={styles.card} onPress={() => setModal(true)}>
+      <Modal
+        isVisible={modal}
+        onSwipeComplete={() => setModal(false)}
+        swipeDirection={["up", "left", "right", "down"]}
+        style={styles.bottomModal}
+      >
+        <View style={styles.modal}>
+          <View style={styles.header}>
+            <Column>
+              <TouchableOpacity
+                style={styles.iconWrapper}
+                onPress={() => props.navigation.goBack()}
+              >
+                <Image source={icon.close} style={styles.icon} />
+              </TouchableOpacity>
+              <Title size={16} isBold color={Colors.dark}>
+                Order detail
+              </Title>
+            </Column>
+          </View>
+
+          <View style={styles.content}>
+            <Column justifyContent="space-between" style={styles.list}>
+              <Column>
+                <Column>
+                  <Title size={16} color={Colors.info} isBold>
+                    1
+                  </Title>
+                  <Spacing marginRight={15} />
+                </Column>
+                <Column isColumn>
+                  <Title>Burrito chicken special</Title>
+                  <Caption>Small</Caption>
+                </Column>
+              </Column>
+              <Title color={Colors.text}>$12.00</Title>
+            </Column>
+            <Column justifyContent="space-between" style={styles.list}>
+              <Column>
+                <Column>
+                  <Title size={16} color={Colors.info} isBold>
+                    2
+                  </Title>
+                  <Spacing marginRight={15} />
+                </Column>
+                <Column isColumn>
+                  <Title>Burrito chicken special</Title>
+                  <Caption>Small</Caption>
+                </Column>
+              </Column>
+              <Title color={Colors.text}>$12.00</Title>
+            </Column>
+
+            <Column justifyContent="space-between" style={styles.list}>
+              <Column>
+                <Column>
+                  <Title size={16} color={Colors.info} isBold />
+                  <Spacing marginRight={25} />
+                </Column>
+                <Column isColumn>
+                  <Title>Subtotal</Title>
+                </Column>
+              </Column>
+              <Title color={Colors.text}>$12.00</Title>
+            </Column>
+            <Column
+              justifyContent="space-between"
+              style={[styles.list, styles.noBorder]}
+            >
+              <Column>
+                <Column>
+                  <Title size={16} color={Colors.info} isBold />
+                  <Spacing marginRight={25} />
+                </Column>
+                <Column isColumn>
+                  <Title color={Colors.dark} size={18} isBold>
+                    Total
+                  </Title>
+                </Column>
+              </Column>
+              <Title color={Colors.dark} size={18} isBold>
+                $12.00
+              </Title>
+            </Column>
+
+            <Spacing marginTop={5} />
+          </View>
+
+          <View style={styles.btnWrapper}>
+            <Button style={styles.btnDefault}>
+              <Title isBold color={Colors.text}>
+                Cancel Order
+              </Title>
+            </Button>
+          </View>
+        </View>
+      </Modal>
+
       <Column style={styles.columnTop}>
         <View style={styles.imagesWrapper}>
           <Image
@@ -63,9 +164,9 @@ function Order(props: any) {
 
 Order.navigationOptions = {
   headerTitle: (
-    <Title isBold size={18}>
+    <TitleHeader isBold size={18}>
       Order
-    </Title>
+    </TitleHeader>
   )
 };
 
@@ -108,6 +209,62 @@ const styles = ScaledSheet.create({
     borderTopColor: Colors.smoke,
     padding: 15,
     height: "50@vs"
+  },
+
+  bottomModal: {
+    justifyContent: "flex-end",
+    margin: 0
+  },
+
+  noBorder: {
+    borderBottomWidth: 0
+  },
+  header: {
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.background,
+    height: "60@vs",
+    justifyContent: "center",
+    paddingLeft: 15,
+    paddingRight: 15
+  },
+  content: {
+    paddingLeft: 15,
+    paddingRight: 15
+  },
+  list: {
+    height: "60@vs",
+    alignItems: "center",
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.background
+  },
+  btnWrapper: {
+    position: "absolute",
+    width: "100%",
+    bottom: 15,
+    alignSelf: "center"
+  },
+  btnDefault: {
+    borderWidth: 1,
+    borderColor: Colors.background,
+    borderRadius: 4,
+    marginLeft: 15,
+    marginRight: 15
+  },
+  iconWrapper: {
+    width: 12,
+    height: 12,
+    marginRight: 10,
+    alignSelf: "center"
+  },
+  icon: {
+    width: "100%",
+    height: "100%"
+  },
+  modal: {
+    backgroundColor: "#fff",
+    height: 400,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10
   }
 });
 

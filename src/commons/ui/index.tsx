@@ -20,7 +20,7 @@ export const Column = styled.View`
 
 export const List = styled.TouchableOpacity`
   background-color: ${Colors.light};
-  height: 60px;
+  height: ${(props: any) => (props.height ? props.height : "60px")};
   justify-content: center;
   padding-left: 15px;
   padding-right: 15px;
