@@ -8,14 +8,7 @@ import { List, Column, Spacing } from "commons/ui";
 
 import { ScaledSheet } from "react-native-size-matters";
 import { Colors } from "styles";
-
-const icon = {
-  give: require("../../assets/icons/icon-give.png"),
-  payment: require("../../assets/icons/icon-payment.png"),
-  about: require("../../assets/icons/icon-about.png"),
-  help: require("../../assets/icons/icon-help.png"),
-  promotion: require("../../assets/icons/icon-promotion.png")
-};
+import * as Icon from "assets/icons";
 
 function Account(props: any) {
   const [modal, setModal] = React.useState(false);
@@ -76,19 +69,22 @@ function Account(props: any) {
 
       <List style={styles.list}>
         <View style={styles.icon}>
-          <Image source={icon.give} style={styles.iconImg} />
+          <Image source={Icon.give.default} style={styles.iconImg} />
         </View>
         <Title>Give $10, Get $10</Title>
       </List>
-      <List style={styles.list}>
+      <List
+        style={styles.list}
+        onPress={() => props.navigation.navigate("Payment")}
+      >
         <View style={styles.icon}>
-          <Image source={icon.payment} style={styles.iconImg} />
+          <Image source={Icon.payment.default} style={styles.iconImg} />
         </View>
         <Title>Payment method</Title>
       </List>
       <List style={styles.list}>
         <View style={styles.icon}>
-          <Image source={icon.promotion} style={styles.iconImg} />
+          <Image source={Icon.promotion.default} style={styles.iconImg} />
         </View>
         <Title>Promotion</Title>
       </List>
@@ -97,13 +93,13 @@ function Account(props: any) {
 
       <List style={styles.list} onPress={() => setModal(true)}>
         <View style={styles.icon}>
-          <Image source={icon.help} style={styles.iconImg} />
+          <Image source={Icon.help.default} style={styles.iconImg} />
         </View>
         <Title>Help</Title>
       </List>
       <List style={styles.list}>
         <View style={styles.icon}>
-          <Image source={icon.about} style={styles.iconImg} />
+          <Image source={Icon.about.default} style={styles.iconImg} />
         </View>
         <Title>About Sender</Title>
       </List>
@@ -124,7 +120,7 @@ const styles = ScaledSheet.create({
   avatar: {
     width: "100%",
     height: "100%",
-    borderRadius: 30
+    borderRadius: 25
   },
   list: {
     flexDirection: "row",

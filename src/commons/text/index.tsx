@@ -34,5 +34,8 @@ export const P = styled.Text`
 
 export const TitleHeader = styled(Title)`
   width: 100%;
+  color: #333;
   text-align: center;
+  font-family: "SFUIText-Bold";
+  font-size: 16;
 `;

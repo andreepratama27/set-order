@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, ScrollView, Text, Image, TouchableOpacity } from "react-native";
 import { ScaledSheet } from "react-native-size-matters";
+import * as Icon from "assets/icons/";
 
 import Modal from "react-native-modal";
 
@@ -10,8 +11,6 @@ import { Column, Spacing } from "commons/ui";
 
 import { Colors } from "styles";
 
-const icon = { close: require("../../assets/img/close.png") };
-
 function Card(props: any) {
   const [modal, setModal] = React.useState(false);
 
@@ -20,7 +19,7 @@ function Card(props: any) {
       <Modal
         isVisible={modal}
         onSwipeComplete={() => setModal(false)}
-        swipeDirection={["up", "left", "right", "down"]}
+        swipeDirection={["right", "left"]}
         style={styles.bottomModal}
       >
         <View style={styles.modal}>
@@ -30,7 +29,7 @@ function Card(props: any) {
                 style={styles.iconWrapper}
                 onPress={() => props.navigation.goBack()}
               >
-                <Image source={icon.close} style={styles.icon} />
+                <Image source={Icon.close.default} style={styles.icon} />
               </TouchableOpacity>
               <Title size={16} isBold color={Colors.dark}>
                 Order detail
@@ -39,42 +38,78 @@ function Card(props: any) {
           </View>
 
           <View style={styles.content}>
-            <Column justifyContent="space-between" style={styles.list}>
-              <Column>
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              style={[styles.scrollList]}
+            >
+              <Column justifyContent="space-between" style={styles.list}>
                 <Column>
-                  <Title size={16} color={Colors.info} isBold>
-                    1
-                  </Title>
-                  <Spacing marginRight={15} />
+                  <Column>
+                    <Title size={16} color={Colors.info} isBold>
+                      1
+                    </Title>
+                    <Spacing marginRight={15} />
+                  </Column>
+                  <Column isColumn>
+                    <Title>Burrito chicken special</Title>
+                    <Caption>Small</Caption>
+                  </Column>
                 </Column>
-                <Column isColumn>
-                  <Title>Burrito chicken special</Title>
-                  <Caption>Small</Caption>
-                </Column>
+                <Title color={Colors.text}>$12.00</Title>
               </Column>
-              <Title color={Colors.text}>$12.00</Title>
-            </Column>
-            <Column justifyContent="space-between" style={styles.list}>
-              <Column>
+              <Column justifyContent="space-between" style={styles.list}>
                 <Column>
-                  <Title size={16} color={Colors.info} isBold>
-                    2
-                  </Title>
-                  <Spacing marginRight={15} />
+                  <Column>
+                    <Title size={16} color={Colors.info} isBold>
+                      1
+                    </Title>
+                    <Spacing marginRight={15} />
+                  </Column>
+                  <Column isColumn>
+                    <Title>Burrito chicken special</Title>
+                    <Caption>Small</Caption>
+                  </Column>
                 </Column>
-                <Column isColumn>
-                  <Title>Burrito chicken special</Title>
-                  <Caption>Small</Caption>
-                </Column>
+                <Title color={Colors.text}>$12.00</Title>
               </Column>
-              <Title color={Colors.text}>$12.00</Title>
-            </Column>
+              <Column justifyContent="space-between" style={styles.list}>
+                <Column>
+                  <Column>
+                    <Title size={16} color={Colors.info} isBold>
+                      1
+                    </Title>
+                    <Spacing marginRight={15} />
+                  </Column>
+                  <Column isColumn>
+                    <Title>Burrito chicken special</Title>
+                    <Caption>Small</Caption>
+                  </Column>
+                </Column>
+                <Title color={Colors.text}>$12.00</Title>
+              </Column>
+              <Column justifyContent="space-between" style={styles.list}>
+                <Column>
+                  <Column>
+                    <Title size={16} color={Colors.info} isBold>
+                      2
+                    </Title>
+                    <Spacing marginRight={15} />
+                  </Column>
+                  <Column isColumn>
+                    <Title>Burrito chicken special</Title>
+                    <Caption>Small</Caption>
+                  </Column>
+                </Column>
+                <Title color={Colors.text}>$12.00</Title>
+              </Column>
+            </ScrollView>
+          </View>
 
-            <Column justifyContent="space-between" style={styles.list}>
+          <View style={styles.btnWrapper}>
+            <Column justifyContent="space-between" style={[styles.listTotal]}>
               <Column>
                 <Column>
                   <Title size={16} color={Colors.info} isBold />
-                  <Spacing marginRight={25} />
                 </Column>
                 <Column isColumn>
                   <Title>Subtotal</Title>
@@ -82,15 +117,12 @@ function Card(props: any) {
               </Column>
               <Title color={Colors.text}>$12.00</Title>
             </Column>
+
             <Column
               justifyContent="space-between"
-              style={[styles.list, styles.noBorder]}
+              style={[styles.listTotal, styles.noBorder]}
             >
               <Column>
-                <Column>
-                  <Title size={16} color={Colors.info} isBold />
-                  <Spacing marginRight={25} />
-                </Column>
                 <Column isColumn>
                   <Title color={Colors.dark} size={18} isBold>
                     Total
@@ -101,11 +133,6 @@ function Card(props: any) {
                 $12.00
               </Title>
             </Column>
-
-            <Spacing marginTop={5} />
-          </View>
-
-          <View style={styles.btnWrapper}>
             <Button style={styles.btnDefault}>
               <Title isBold color={Colors.text}>
                 Cancel Order
@@ -138,6 +165,7 @@ function Card(props: any) {
         style={styles.columnBottom}
       >
         <Column isColumn style={styles.columnCenter}>
+          <Spacing marginTop={5} />
           <Caption>30 April 2019 at 3:30 AM</Caption>
           <Spacing marginBottom={5} />
           <Caption>Table for 2</Caption>
@@ -163,11 +191,7 @@ function Order(props: any) {
 }
 
 Order.navigationOptions = {
-  headerTitle: (
-    <TitleHeader isBold size={18}>
-      Order
-    </TitleHeader>
-  )
+  headerTitle: <TitleHeader>Order</TitleHeader>
 };
 
 const styles = ScaledSheet.create({
@@ -181,7 +205,9 @@ const styles = ScaledSheet.create({
     borderTopColor: Colors.background,
     borderBottomColor: Colors.background,
     backgroundColor: Colors.light,
-    marginBottom: 15
+    marginBottom: 15,
+    paddingTop: 15,
+    paddingBottom: 10
   },
   imagesWrapper: {
     width: "100@s",
@@ -237,10 +263,19 @@ const styles = ScaledSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: Colors.background
   },
+  listTotal: {
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.background,
+    height: "50@vs",
+    marginLeft: 15,
+    marginRight: 15,
+    marginBottom: 5,
+    alignItems: "center"
+  },
   btnWrapper: {
     position: "absolute",
     width: "100%",
-    bottom: 15,
+    bottom: 20,
     alignSelf: "center"
   },
   btnDefault: {
@@ -262,9 +297,12 @@ const styles = ScaledSheet.create({
   },
   modal: {
     backgroundColor: "#fff",
-    height: 400,
+    height: "470@vs",
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10
+  },
+  scrollList: {
+    height: "170@vs"
   }
 });
 

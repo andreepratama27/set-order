@@ -8,5 +8,6 @@ module.exports = {
   warning: "#efbf4c",
   info: "#1e868b",
   gray: "#555a6f",
-  facebook: "#3b5998"
+  facebook: "#3b5998",
+  danger: "#c4302b"
 };

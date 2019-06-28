@@ -4,22 +4,32 @@ import {
 } from "react-navigation";
 import { createAppContainer } from "@react-navigation/native";
 
-import Account from "modules/account";
 import Home from "modules/home";
-import Order from "modules/order";
 
+import Account from "modules/account";
 import ProfileDetail from "modules/profile-detail";
+import Payment from "modules/payment";
+
+import Order from "modules/order";
+import RestaurantDetail from "modules/restaurant-detail";
 
 import BottomTab from "../BottomTab";
 
-const AppNavigator = createBottomTabNavigator(
+const TabStack = createBottomTabNavigator(
   {
     Home: {
-      screen: createStackNavigator({
-        Home: {
-          screen: Home
+      screen: createStackNavigator(
+        {
+          Home: {
+            screen: Home
+          }
+        },
+        {
+          navigationOptions: {
+            header: null
+          }
         }
-      })
+      )
     },
     Order: {
       screen: createStackNavigator({
@@ -32,15 +42,37 @@ const AppNavigator = createBottomTabNavigator(
       screen: createStackNavigator({
         Account: {
           screen: Account
-        },
-        ProfileDetail: {
-          screen: ProfileDetail
         }
       })
     }
   },
   {
-    initialRouteName: "Account"
+    initialRouteName: "Home",
+    navigationOptions: {
+      header: null
+    }
+  }
+);
+
+// const AppNavigator = TabStack;
+const AppNavigator = createStackNavigator(
+  {
+    Root: TabStack,
+    ProfileDetail: {
+      screen: ProfileDetail
+    },
+    Payment: {
+      screen: Payment
+    },
+    RestaurantDetail: {
+      screen: RestaurantDetail
+    }
+  },
+  {
+    initialRouteName: "RestaurantDetail",
+    navigationOptions: {
+      header: null
+    }
   }
 );
 
