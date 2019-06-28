@@ -3,7 +3,7 @@ import { View, TextInput, Image, ScrollView } from "react-native";
 import { ScaledSheet } from "react-native-size-matters";
 
 import { Title, Caption } from "commons/text";
-import { Column, Spacing } from "commons/ui";
+import { Column, Spacing, List } from "commons/ui";
 
 import { Colors } from "styles";
 
@@ -11,7 +11,11 @@ type HomeProps = {};
 
 function Card(props: any) {
   return (
-    <View style={styles.card}>
+    <List
+      style={styles.card}
+      onPress={() => props.navigation.navigate("RestaurantDetail")}
+      height={300}
+    >
       <Column isColumn>
         <View style={styles.imageWrapper}>
           <Image
@@ -36,7 +40,7 @@ function Card(props: any) {
           </Column>
         </Column>
       </Column>
-    </View>
+    </List>
   );
 }
 
@@ -50,9 +54,9 @@ function Home(props: HomeProps) {
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Card />
-        <Card />
-        <Card />
+        <Card {...props} />
+        <Card {...props} />
+        <Card {...props} />
       </ScrollView>
     </View>
   );

@@ -4,14 +4,15 @@ import {
 } from "react-navigation";
 import { createAppContainer } from "@react-navigation/native";
 
-import Home from "modules/home";
+import Order from "modules/order";
 
 import Account from "modules/account";
 import ProfileDetail from "modules/profile-detail";
 import Payment from "modules/payment";
 
-import Order from "modules/order";
+import Home from "modules/home";
 import RestaurantDetail from "modules/restaurant-detail";
+import FoodDetail from "modules/food-detail";
 
 import BottomTab from "../BottomTab";
 
@@ -66,10 +67,13 @@ const AppNavigator = createStackNavigator(
     },
     RestaurantDetail: {
       screen: RestaurantDetail
+    },
+    FoodDetail: {
+      screen: FoodDetail
     }
   },
   {
-    initialRouteName: "RestaurantDetail",
+    initialRouteName: "Root",
     navigationOptions: {
       header: null
     }

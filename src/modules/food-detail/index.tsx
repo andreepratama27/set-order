@@ -15,11 +15,11 @@ import { Title, Caption } from "commons/text";
 import { Spacing, List, Column } from "commons/ui";
 import { Button } from "commons/button";
 
-const HEADER_MAX_HEIGHT = 300;
+const HEADER_MAX_HEIGHT = 200;
 const HEADER_MIN_HEIGHT = Platform.OS === "ios" ? 60 : 73;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 
-export default class RestaurantDetail extends Component<any, any> {
+export default class FoodDetail extends Component {
   constructor(props: any) {
     super(props);
 
@@ -104,125 +104,49 @@ export default class RestaurantDetail extends Component<any, any> {
               Golden vegetable food
             </Title>
             <Spacing marginBottom={5} />
-            <Caption size={14}>Chinese cuisine, Indonesia</Caption>
-            <Spacing marginBottom={5} />
-            <Caption>4.0</Caption>
+            <Caption size={14}>
+              This food consists of wheat tortillas filled with various kinds of
+              meat such as beef, chichkin
+            </Caption>
           </View>
 
           <View style={styles.timerSelect}>
-            <Title color={Colors.dark} size={14} isBold>
-              Lunch menu
+            <Title color={Colors.dark} size={16} isBold>
+              Select a size
             </Title>
           </View>
 
           <View style={styles.menuWrapper}>
-            <Column alignItems="center" style={styles.card}>
-              <View style={styles.menuImg}>
-                <Image
-                  source={{ uri: "https://picsum.photos/id/10/2500/1667" }}
-                  style={styles.img}
-                />
-              </View>
-
-              <Spacing marginRight={15} />
-
-              <Column isColumn justifyContent="center">
-                <Title>Burrito chicken special</Title>
-                <Caption style={{ padingRight: 15 }}>
-                  This food consists of wheat tortillas filled with various kind
-                </Caption>
-                <Spacing marginBottom={10} />
-
-                <Column justifyContent={"space-between"}>
-                  <Title isBold color={Colors.dark}>
-                    $13.99
-                  </Title>
-
-                  <Button
-                    bgColor={Colors.warning}
-                    style={styles.btnSmall}
-                    onPress={() => this.props.navigation.navigate("FoodDetail")}
-                  >
-                    <Title>Add</Title>
-                  </Button>
-                </Column>
-              </Column>
+            <Column style={styles.list}>
+              <Text>Small</Text>
             </Column>
-            <Column alignItems="center" style={styles.card}>
-              <View style={styles.menuImg}>
-                <Image
-                  source={{ uri: "https://picsum.photos/id/10/2500/1667" }}
-                  style={styles.img}
-                />
-              </View>
-
-              <Spacing marginRight={15} />
-
-              <Column isColumn>
-                <Title>Burrito chicken special</Title>
-                <Caption>
-                  This food consists of wheat tortillas filled with various kind
-                </Caption>
-                <Column>
-                  <Title isBold color={Colors.dark}>
-                    $13.99
-                  </Title>
-                  <Button bgColor={Colors.warning} style={styles.btnSmall}>
-                    <Title>Add</Title>
-                  </Button>
-                </Column>
-              </Column>
+            <Column style={[styles.list, styles.noBorder]}>
+              <Text>Small</Text>
             </Column>
-            <Column alignItems="center" style={styles.card}>
-              <View style={styles.menuImg}>
-                <Image
-                  source={{ uri: "https://picsum.photos/id/10/2500/1667" }}
-                  style={styles.img}
-                />
-              </View>
+          </View>
 
-              <Spacing marginRight={15} />
+          <View style={styles.timerSelect}>
+            <Title color={Colors.dark} size={16} isBold>
+              Select a meat
+            </Title>
+          </View>
 
-              <Column isColumn>
-                <Title>Burrito chicken special</Title>
-                <Caption style={{ padingRight: 15 }}>
-                  This food consists of wheat tortillas filled with various kind
-                </Caption>
-                <Column>
-                  <Title isBold color={Colors.dark}>
-                    $13.99
-                  </Title>
-                  <Button bgColor={Colors.warning} style={styles.btnSmall}>
-                    <Title>Add</Title>
-                  </Button>
-                </Column>
-              </Column>
+          <View style={styles.menuWrapper}>
+            <Column style={styles.list}>
+              <Text>Chicken</Text>
             </Column>
-            <Column alignItems="center" style={styles.card}>
-              <View style={styles.menuImg}>
-                <Image
-                  source={{ uri: "https://picsum.photos/id/10/2500/1667" }}
-                  style={styles.img}
-                />
-              </View>
-
-              <Spacing marginRight={15} />
-
-              <Column isColumn>
-                <Title>Burrito chicken special</Title>
-                <Caption>
-                  This food consists of wheat tortillas filled with various kind
-                </Caption>
-                <Column>
-                  <Title isBold color={Colors.dark}>
-                    $13.99
-                  </Title>
-                  <Button bgColor={Colors.warning} style={styles.btnSmall}>
-                    <Title>Add</Title>
-                  </Button>
-                </Column>
-              </Column>
+            <Column style={styles.list} justifyContent="space-between">
+              <Text>Beef</Text>
+              <Caption>$4.00</Caption>
             </Column>
+          </View>
+
+          <View style={styles.buttonWrapper}>
+            <Button bgColor={Colors.warning}>
+              <Title isBold color={Colors.dark}>
+                Add To order
+              </Title>
+            </Button>
           </View>
         </Animated.ScrollView>
 
@@ -343,5 +267,17 @@ const styles = ScaledSheet.create({
   btnSmall: {
     width: "40@s",
     height: "25@vs"
+  },
+  list: {
+    height: "50@vs",
+    alignItems: "center",
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.background
+  },
+  noBorder: {
+    borderBottomWidth: 0
+  },
+  buttonWrapper: {
+    padding: 15
   }
 });
