@@ -48,7 +48,7 @@ const TabStack = createBottomTabNavigator(
     }
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "Order",
     navigationOptions: {
       header: null
     }
@@ -73,7 +73,7 @@ const AppNavigator = createStackNavigator(
     }
   },
   {
-    initialRouteName: "Root",
+    initialRouteName: "FoodDetail",
     navigationOptions: {
       header: null
     }
