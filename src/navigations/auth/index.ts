@@ -13,6 +13,8 @@ import Payment from "modules/payment";
 import Home from "modules/home";
 import RestaurantDetail from "modules/restaurant-detail";
 import FoodDetail from "modules/food-detail";
+import ViewOrder from "modules/view-order";
+import OrderSuccess from "modules/order-success";
 
 import BottomTab from "../BottomTab";
 
@@ -70,10 +72,16 @@ const AppNavigator = createStackNavigator(
     },
     FoodDetail: {
       screen: FoodDetail
+    },
+    ViewOrder: {
+      screen: ViewOrder
+    },
+    OrderSuccess: {
+      screen: OrderSuccess
     }
   },
   {
-    initialRouteName: "FoodDetail",
+    initialRouteName: "OrderSuccess",
     navigationOptions: {
       header: null
     }

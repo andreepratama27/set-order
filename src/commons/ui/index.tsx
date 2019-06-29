@@ -32,3 +32,12 @@ export const Spacing = styled.View`
     props.marginBottom ? props.marginBottom : 0};
   margin-top: ${(props: any) => (props.marginTop ? props.marginTop : 0)};
 `;
+
+export const Container = styled.View`
+  flex: 1;
+  background-color: ${Colors.smoke};
+  justify-content: ${(props: any) =>
+    props.justifyContent ? props.justifyContent : "flex-start"};
+  align-items: ${(props: any) =>
+    props.alignItems ? props.alignItems : "flex-start"};
+`;

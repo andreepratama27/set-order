@@ -20,6 +20,12 @@ export const Title = styled.Text`
   line-height: 28px;
 `;
 
+export const Medium = styled.Text`
+  font-size: 14px;
+  font-family: "SFUIText-Bold";
+  line-height: 28px;
+`;
+
 export const Caption = styled.Text`
   font-size: ${(props: TextProps) => (props.size ? props.size : "12px")};
   font-family: "SFUIText-Light";

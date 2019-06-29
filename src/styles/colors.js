@@ -1,7 +1,7 @@
 module.exports = {
   black: "#000000",
   dark: "#333333",
-  text: "#999999",
+  text: "#888888",
   light: "#ffffff",
   smoke: "#f4f4f4",
   background: "#eee",
