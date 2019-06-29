@@ -157,7 +157,11 @@ function FoodDetail(props: any) {
         </View>
 
         <View style={styles.buttonWrapper}>
-          <Button bgColor={Colors.warning} style={styles.btnFull}>
+          <Button
+            bgColor={Colors.warning}
+            style={styles.btnFull}
+            onPress={() => props.navigation.navigate("ViewOrder")}
+          >
             <Title isBold color={Colors.dark}>
               Add To order
             </Title>

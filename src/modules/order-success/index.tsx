@@ -9,7 +9,7 @@ import { Colors } from "styles";
 
 const verified = require("../../assets/img/verified.png");
 
-function OrderSuccess() {
+function OrderSuccess(props: any) {
   return (
     <Container justifyContent="center" alignItems="center">
       <View>
@@ -29,7 +29,10 @@ function OrderSuccess() {
       </View>
 
       <View style={styles.buttonWrapper}>
-        <Button bgColor={Colors.warning}>
+        <Button
+          bgColor={Colors.warning}
+          onPress={() => props.navigation.navigate("Home")}
+        >
           <Title isBold>Got it</Title>
         </Button>
       </View>

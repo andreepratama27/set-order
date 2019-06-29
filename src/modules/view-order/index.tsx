@@ -10,7 +10,7 @@ import { Colors } from "styles";
 import styles from "./styles";
 
 import * as Icon from "assets/icons";
-import { isContinueStatement } from "@babel/types";
+import { isContinueStatement, tsPropertySignature } from "@babel/types";
 
 const Divider = styled.TouchableOpacity`
   padding-left: 15;
@@ -27,7 +27,7 @@ const Avatar = styled.View`
   background-color: ${Colors.danger};
 `;
 
-function ViewOrder() {
+function ViewOrder(props: any) {
   return (
     <ScrollView style={styles.container}>
       <Divider>
@@ -46,7 +46,7 @@ function ViewOrder() {
         <Avatar />
       </Column>
 
-      <Spacing marginBottom={5} />
+      <Spacing marginBottom={10} />
 
       <Column style={styles.list} isColumn justifyContent="space-between">
         <Medium isBold>Your order</Medium>
@@ -164,8 +164,14 @@ function ViewOrder() {
         </View>
       </Column>
 
+      <Spacing marginTop={15} />
+
       <View>
-        <Button bgColor={Colors.warning} borderRadius={"0px"}>
+        <Button
+          bgColor={Colors.warning}
+          borderRadius={"0px"}
+          onPress={() => props.navigation.navigate("OrderSuccess")}
+        >
           <Title color={Colors.dark} isBold>
             Place Order
           </Title>
@@ -176,7 +182,8 @@ function ViewOrder() {
 }
 
 ViewOrder.navigationOptions = {
-  headerTitle: <TitleHeader>Golden Vegetable Food</TitleHeader>
+  headerTitle: <TitleHeader>Golden Vegetable Food</TitleHeader>,
+  headerLeft: null
 };
 
 export default ViewOrder;
