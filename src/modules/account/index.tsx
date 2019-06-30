@@ -157,7 +157,12 @@ Account.navigationOptions = {
     <TitleHeader isBold size={18}>
       My Profile
     </TitleHeader>
-  )
+  ),
+  headerStyle: {
+    elevation: 0,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.background
+  }
 };
 
 export default Account;

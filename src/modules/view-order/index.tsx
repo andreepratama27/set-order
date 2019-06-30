@@ -10,7 +10,6 @@ import { Colors } from "styles";
 import styles from "./styles";
 
 import * as Icon from "assets/icons";
-import { isContinueStatement, tsPropertySignature } from "@babel/types";
 
 const Divider = styled.TouchableOpacity`
   padding-left: 15;
@@ -183,7 +182,12 @@ function ViewOrder(props: any) {
 
 ViewOrder.navigationOptions = {
   headerTitle: <TitleHeader>Golden Vegetable Food</TitleHeader>,
-  headerLeft: null
+  headerLeft: null,
+  headerStyle: {
+    elevation: 0,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.background
+  }
 };
 
 export default ViewOrder;

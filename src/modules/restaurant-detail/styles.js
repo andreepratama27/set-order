@@ -1,8 +1,8 @@
 import { Platform } from "react-native";
-import { ScaledSheet } from "react-native-size-matters";
 import { Colors } from "styles";
+import { ScaledSheet } from "react-native-size-matters";
 
-const HEADER_MAX_HEIGHT = 150;
+const HEADER_MAX_HEIGHT = 220;
 
 const styles = ScaledSheet.create({
   fill: {
@@ -57,8 +57,8 @@ const styles = ScaledSheet.create({
     justifyContent: "center"
   },
   headerTitle: {
-    marginTop: Platform.OS === "ios" ? 0 : 140,
-    height: "140@vs",
+    marginTop: Platform.OS === "ios" ? 0 : 220,
+    height: "120@vs",
     justifyContent: "center",
     paddingLeft: 15,
     paddingRight: 15
@@ -67,16 +67,15 @@ const styles = ScaledSheet.create({
     backgroundColor: Colors.smoke,
     padding: 15
   },
+  center: {
+    justifyContent: "center",
+    alignItems: "center"
+  },
   menuImg: {
     width: "70@s",
-    height: "70@vs",
-    justifyContent: "center"
+    height: "70@vs"
   },
-  menuWrapper: {
-    padding: 15,
-    paddingTop: 0,
-    paddingBottom: 0
-  },
+  menuWrapper: {},
   img: {
     width: "100%",
     height: "100%",
@@ -86,37 +85,18 @@ const styles = ScaledSheet.create({
   card: {
     borderBottomWidth: 1,
     borderBottomColor: Colors.background,
-    height: "90@vs"
+    height: "140@vs"
   },
   btnSmall: {
-    width: "40@s",
-    height: "25@vs"
+    width: "50@s",
+    height: "30@vs"
   },
-  list: {
-    height: "50@vs",
-    alignItems: "center",
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.background
+  grid: {
+    alignSelf: "center"
   },
-  noBorder: {
-    borderBottomWidth: 0
-  },
-  buttonWrapper: {
-    height: "120@vs",
-    justifyContent: "flex-end",
-    flexDirection: "column",
-    alignItems: "flex-end",
-    padding: 15
-  },
-  btnFull: {
-    width: "100%"
-  },
-  radio: {
-    width: 20,
-    height: 20,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: Colors.background
+  information: {
+    paddingLeft: 5,
+    paddingRight: 15
   }
 });
 

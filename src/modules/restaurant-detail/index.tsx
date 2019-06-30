@@ -2,22 +2,22 @@ import React, { Component } from "react";
 import {
   Animated,
   Platform,
-  StatusBar,
   Image,
   Text,
   View,
   RefreshControl
 } from "react-native";
 import { Colors } from "styles";
-import { ScaledSheet } from "react-native-size-matters";
 import { Grid, Col } from "react-native-easy-grid";
 
 import { Title, Caption } from "commons/text";
 import { Spacing, List, Column } from "commons/ui";
 import { Button } from "commons/button";
 
+import styles from "./styles";
+
 const HEADER_MAX_HEIGHT = 220;
-const HEADER_MIN_HEIGHT = Platform.OS === "ios" ? 60 : 73;
+const HEADER_MIN_HEIGHT = Platform.OS === "ios" ? 60 : 50;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 
 function Card(props: any) {
@@ -108,12 +108,6 @@ function RestaurantDetail(props: any) {
 
   return (
     <View style={styles.fill}>
-      <StatusBar
-        translucent
-        barStyle="light-content"
-        backgroundColor="rgba(0, 0, 0, 0.251)"
-      />
-
       <Animated.ScrollView
         style={styles.fill}
         scrollEventThrottle={1}
@@ -193,100 +187,5 @@ function RestaurantDetail(props: any) {
 RestaurantDetail.navigationOptions = {
   header: null
 };
-
-const styles = ScaledSheet.create({
-  fill: {
-    flex: 1
-  },
-  content: {
-    flex: 1
-  },
-  header: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: Colors.light,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.background,
-    overflow: "hidden",
-    height: HEADER_MAX_HEIGHT
-  },
-  backgroundImage: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    width: null,
-    height: HEADER_MAX_HEIGHT,
-    resizeMode: "cover"
-  },
-  bar: {
-    backgroundColor: "transparent",
-    marginTop: Platform.OS === "ios" ? 28 : 38,
-    height: 32,
-    alignItems: "center",
-    justifyContent: "center",
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0
-  },
-  title: {
-    color: "white",
-    fontSize: 18
-  },
-  scrollViewContent: {
-    paddingTop: Platform.OS !== "ios" ? HEADER_MAX_HEIGHT : 0
-  },
-  row: {
-    height: 40,
-    margin: 16,
-    backgroundColor: "#D3D3D3",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  headerTitle: {
-    height: "120@vs",
-    justifyContent: "center",
-    paddingLeft: 15,
-    paddingRight: 15
-  },
-  timerSelect: {
-    backgroundColor: Colors.smoke,
-    padding: 15
-  },
-  center: {
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  menuImg: {
-    width: "70@s",
-    height: "70@vs"
-  },
-  menuWrapper: {},
-  img: {
-    width: "100%",
-    height: "100%",
-    alignSelf: "center",
-    borderRadius: 4
-  },
-  card: {
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.background,
-    height: "140@vs"
-  },
-  btnSmall: {
-    width: "50@s",
-    height: "30@vs"
-  },
-  grid: {
-    alignSelf: "center"
-  },
-  information: {
-    paddingLeft: 5,
-    paddingRight: 15
-  }
-});
 
 export default RestaurantDetail;

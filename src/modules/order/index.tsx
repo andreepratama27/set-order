@@ -191,7 +191,12 @@ function Order(props: any) {
 }
 
 Order.navigationOptions = {
-  headerTitle: <TitleHeader>Order</TitleHeader>
+  headerTitle: <TitleHeader>Order</TitleHeader>,
+  headerStyle: {
+    elevation: 0,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.background
+  }
 };
 
 const styles = ScaledSheet.create({

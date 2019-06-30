@@ -52,7 +52,12 @@ function ProfileDetail() {
 
 ProfileDetail.navigationOptions = {
   headerTitle: <TitleHeader>Profile</TitleHeader>,
-  headerRight: <View />
+  headerRight: <View />,
+  headerStyle: {
+    elevation: 0,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.background
+  }
 };
 
 const styles = ScaledSheet.create({

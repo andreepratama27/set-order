@@ -68,13 +68,25 @@ const AppNavigator = createStackNavigator(
       screen: Payment
     },
     RestaurantDetail: {
-      screen: RestaurantDetail
-    },
-    FoodDetail: {
-      screen: FoodDetail
-    },
-    ViewOrder: {
-      screen: ViewOrder
+      screen: createStackNavigator(
+        {
+          RestaurantDetail: {
+            screen: RestaurantDetail
+          },
+
+          FoodDetail: {
+            screen: FoodDetail
+          },
+          ViewOrder: {
+            screen: ViewOrder
+          }
+        },
+        {
+          navigationOptions: {
+            headerTransparent: true
+          }
+        }
+      )
     },
     OrderSuccess: {
       screen: OrderSuccess

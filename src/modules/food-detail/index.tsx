@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import {
   Animated,
   Platform,
-  StatusBar,
   Image,
   Text,
   View,
@@ -19,7 +18,7 @@ import styled from "styled-components/native";
 import styles from "./styles";
 
 const HEADER_MAX_HEIGHT = 150;
-const HEADER_MIN_HEIGHT = Platform.OS === "ios" ? 60 : 73;
+const HEADER_MIN_HEIGHT = Platform.OS === "ios" ? 60 : 50;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 
 const Radio = styled.TouchableOpacity`
@@ -71,11 +70,6 @@ function FoodDetail(props: any) {
 
   return (
     <View style={styles.fill}>
-      <StatusBar
-        translucent
-        barStyle="light-content"
-        backgroundColor="rgba(0, 0, 0, 0.251)"
-      />
       <Animated.ScrollView
         style={styles.fill}
         scrollEventThrottle={1}
