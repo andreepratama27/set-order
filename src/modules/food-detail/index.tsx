@@ -1,17 +1,9 @@
-import React, { Component } from "react";
-import {
-  Animated,
-  Platform,
-  Image,
-  Text,
-  View,
-  RefreshControl,
-  TouchableOpacity
-} from "react-native";
+import React from "react";
+import { Animated, Platform, Text, View, RefreshControl } from "react-native";
 import { Colors } from "styles";
 
 import { Title, Caption } from "commons/text";
-import { Spacing, List, Column } from "commons/ui";
+import { Spacing, Column } from "commons/ui";
 import { Button } from "commons/button";
 import styled from "styled-components/native";
 

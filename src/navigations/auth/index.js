@@ -1,3 +1,4 @@
+import React from "react";
 import {
   createStackNavigator,
   createBottomTabNavigator
@@ -53,7 +54,11 @@ const TabStack = createBottomTabNavigator(
     initialRouteName: "Home",
     navigationOptions: {
       header: null
-    }
+    },
+    tabBarOptions: {
+      showLabel: false
+    },
+    tabBarComponent: props => <BottomTab {...props} />
   }
 );
 
