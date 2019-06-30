@@ -73,6 +73,8 @@ class BottomTab extends React.Component {
 
 const styles = StyleSheet.create({
   tab: {
+    paddingLeft: 55,
+    paddingRight: 55,
     borderTopWidth: 1,
     borderTopColor: Colors.background,
     width: "100%",

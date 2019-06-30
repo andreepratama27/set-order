@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Dimensions } from "react-native";
 import Modal from "react-native-modal";
 
 import { Button } from "commons/button";
@@ -12,6 +12,10 @@ import * as Icon from "assets/icons";
 
 function Account(props: any) {
   const [modal, setModal] = React.useState(false);
+  const deviceHeight = Math.max(
+    Dimensions.get("window").height,
+    Dimensions.get("screen").height
+  );
 
   return (
     <View style={styles.container}>
@@ -19,14 +23,9 @@ function Account(props: any) {
         style={styles.modal}
         isVisible={modal}
         onSwipeComplete={() => setModal(false)}
-        swipeDirection={["up", "left", "right", "down"]}
+        swipeDirection={["down"]}
         backdropOpacity={0.8}
-        animationIn="zoomInDown"
-        animationOut="zoomOutUp"
-        animationInTiming={600}
-        animationOutTiming={600}
-        backdropTransitionInTiming={600}
-        backdropTransitionOutTiming={600}
+        deviceHeight={deviceHeight}
       >
         <View style={styles.modalTop}>
           <Title>How can we help?</Title>

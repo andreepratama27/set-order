@@ -97,6 +97,9 @@ const styles = ScaledSheet.create({
   information: {
     paddingLeft: 5,
     paddingRight: 15
+  },
+  starRating: {
+    flexDirection: "row"
   }
 });
 

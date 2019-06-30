@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { View, ScrollView, Text, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  ScrollView,
+  Dimensions,
+  Image,
+  TouchableOpacity
+} from "react-native";
 import { ScaledSheet } from "react-native-size-matters";
 import * as Icon from "assets/icons/";
 
@@ -13,21 +19,25 @@ import { Colors } from "styles";
 
 function Card(props: any) {
   const [modal, setModal] = React.useState(false);
+  const deviceHeight = Math.max(
+    Dimensions.get("window").height,
+    Dimensions.get("screen").height
+  );
 
   return (
     <TouchableOpacity style={styles.card} onPress={() => setModal(true)}>
       <Modal
         isVisible={modal}
         onSwipeComplete={() => setModal(false)}
-        swipeDirection={["right", "left"]}
         style={styles.bottomModal}
+        deviceHeight={deviceHeight}
       >
         <View style={styles.modal}>
           <View style={styles.header}>
             <Column>
               <TouchableOpacity
                 style={styles.iconWrapper}
-                onPress={() => props.navigation.goBack()}
+                onPress={() => setModal(false)}
               >
                 <Image source={Icon.close.default} style={styles.icon} />
               </TouchableOpacity>

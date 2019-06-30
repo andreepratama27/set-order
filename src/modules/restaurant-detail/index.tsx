@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { Colors } from "styles";
 import { Grid, Col } from "react-native-easy-grid";
+import StarRating from "react-native-star-rating";
 
 import { Title, Caption } from "commons/text";
 import { Spacing, List, Column } from "commons/ui";
@@ -136,7 +137,17 @@ function RestaurantDetail(props: any) {
           <Spacing marginBottom={5} />
           <Caption size={14}>Chinese cuisine, Indonesia</Caption>
           <Spacing marginBottom={5} />
-          <Caption>4.0</Caption>
+          <View style={styles.starRating}>
+            <Caption>3.0</Caption>
+            <Spacing marginRight={10} />
+            <StarRating
+              disabled={false}
+              maxStars={5}
+              rating={3}
+              starSize={15}
+              fullStarColor={Colors.warning}
+            />
+          </View>
         </View>
 
         <View style={styles.timerSelect}>
