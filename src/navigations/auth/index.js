@@ -12,6 +12,8 @@ import ProfileDetail from "modules/profile-detail";
 import Payment from "modules/payment";
 
 import Home from "modules/home";
+import Filter from "modules/filters";
+
 import RestaurantDetail from "modules/restaurant-detail";
 import FoodDetail from "modules/food-detail";
 import ViewOrder from "modules/view-order";
@@ -95,6 +97,9 @@ const AppNavigator = createStackNavigator(
     },
     OrderSuccess: {
       screen: OrderSuccess
+    },
+    Filter: {
+      screen: Filter
     }
   },
   {

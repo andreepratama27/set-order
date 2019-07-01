@@ -6,6 +6,7 @@ import {
   ScrollView,
   TouchableOpacity
 } from "react-native";
+import { NavigationScreenProp } from "react-navigation";
 import { ScaledSheet } from "react-native-size-matters";
 import Icon from "react-native-vector-icons/Ionicons";
 import StarRating from "react-native-star-rating";
@@ -15,7 +16,9 @@ import { Column, Spacing, List } from "commons/ui";
 
 import { Colors } from "styles";
 
-type HomeProps = {};
+type HomeProps = {
+  navigation: NavigationScreenProp<any, any>;
+};
 
 function Card(props: any) {
   return (
@@ -73,7 +76,10 @@ function Home(props: HomeProps) {
         </TouchableOpacity>
         <Title color={Colors.text}>Search Restaurant</Title>
 
-        <TouchableOpacity style={styles.switchBtn}>
+        <TouchableOpacity
+          style={styles.switchBtn}
+          onPress={() => props.navigation.navigate("Filter")}
+        >
           <Icon name="ios-switch" size={20} color={Colors.dark} />
         </TouchableOpacity>
       </View>

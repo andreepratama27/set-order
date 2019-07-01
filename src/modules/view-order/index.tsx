@@ -157,7 +157,11 @@ function ViewOrder(props: any) {
                 </Column>
               </Column>
 
-              <Caption>Change</Caption>
+              <TouchableOpacity
+                onPress={() => props.navigation.navigate("Payment")}
+              >
+                <Caption>Change</Caption>
+              </TouchableOpacity>
             </Column>
           </Column>
         </View>
