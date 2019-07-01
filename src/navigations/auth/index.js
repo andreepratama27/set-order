@@ -103,7 +103,7 @@ const AppNavigator = createStackNavigator(
     }
   },
   {
-    initialRouteName: "Root",
+    initialRouteName: "RestaurantDetail",
     navigationOptions: {
       header: null
     }

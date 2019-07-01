@@ -64,7 +64,10 @@ const styles = ScaledSheet.create({
     paddingRight: 15
   },
   timerSelect: {
+    flexDirection: "row",
+    justifyContent: "space-between",
     backgroundColor: Colors.smoke,
+    alignItems: "center",
     padding: 15
   },
   center: {
@@ -100,7 +103,40 @@ const styles = ScaledSheet.create({
   },
   starRating: {
     flexDirection: "row"
-  }
+  },
+  align: {
+    flexDirection: "row",
+    alignItems: "center"
+  },
+
+  modal: {
+    backgroundColor: "#fff",
+    height: "220@vs",
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10
+  },
+  scrollList: {
+    height: "170@vs"
+  },
+
+  modalHeader: {
+    borderBottomWidth: 1,
+    height: "60@vs",
+    alignItems: "center",
+    flexDirection: "row",
+    paddingLeft: 15,
+    borderBottomColor: Colors.background
+  },
+
+  modalContent: {
+    padding: 15
+  },
+
+  bottomModal: {
+    justifyContent: "flex-end",
+    margin: 0
+  },
+  list: {}
 });
 
 export default styles;

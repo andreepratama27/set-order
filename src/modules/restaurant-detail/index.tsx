@@ -3,12 +3,18 @@ import {
   Animated,
   Platform,
   Image,
-  Text,
+  ScrollView,
+  TouchableOpacity,
   View,
-  RefreshControl
+  RefreshControl,
+  Dimensions
 } from "react-native";
+import styled from "styled-components/native";
 import { Colors } from "styles";
 import { Grid, Col } from "react-native-easy-grid";
+import Modal from "react-native-modal";
+
+import Icon from "react-native-vector-icons/EvilIcons";
 import StarRating from "react-native-star-rating";
 
 import { Title, Caption } from "commons/text";
@@ -20,6 +26,15 @@ import styles from "./styles";
 const HEADER_MAX_HEIGHT = 220;
 const HEADER_MIN_HEIGHT = Platform.OS === "ios" ? 60 : 50;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
+
+const Radio = styled.TouchableOpacity`
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  border-width: ${(props: any) => (props.selected ? 4 : 1)};
+  border-color: ${(props: any) =>
+    props.selected ? Colors.warning : Colors.background};
+`;
 
 function Card(props: any) {
   return (
@@ -74,6 +89,7 @@ function RestaurantDetail(props: any) {
     new Animated.Value(Platform.OS === "ios" ? -HEADER_MAX_HEIGHT : 0)
   );
   const [refreshing, setRefreshing] = React.useState(false);
+  const [modal, setModal] = React.useState(false);
 
   const scrollY = Animated.add(
     scrollingY,
@@ -107,6 +123,11 @@ function RestaurantDetail(props: any) {
     extrapolate: "clamp"
   });
 
+  const deviceHeight = Math.max(
+    Dimensions.get("window").height,
+    Dimensions.get("screen").height
+  );
+
   return (
     <View style={styles.fill}>
       <Animated.ScrollView
@@ -136,7 +157,7 @@ function RestaurantDetail(props: any) {
           </Title>
           <Spacing marginBottom={5} />
           <Caption size={14}>Chinese cuisine, Indonesia</Caption>
-          <Spacing marginBottom={5} />
+          <Spacing marginBottom={10} />
           <View style={styles.starRating}>
             <Caption>3.0</Caption>
             <Spacing marginRight={10} />
@@ -150,11 +171,24 @@ function RestaurantDetail(props: any) {
           </View>
         </View>
 
-        <View style={styles.timerSelect}>
-          <Title color={Colors.dark} size={14} isBold>
-            Lunch menu
-          </Title>
-        </View>
+        <TouchableOpacity
+          style={styles.timerSelect}
+          onPress={() => setModal(true)}
+        >
+          <View style={styles.align}>
+            <Title color={Colors.dark} isBold>
+              Lunch menu
+            </Title>
+
+            <Spacing marginRight={10} />
+
+            <Caption>11:00 am - 2:00 pm</Caption>
+          </View>
+
+          <View>
+            <Icon name="chevron-right" size={22} />
+          </View>
+        </TouchableOpacity>
 
         <View style={styles.menuWrapper}>
           <Card {...props} />
@@ -162,6 +196,58 @@ function RestaurantDetail(props: any) {
           <Card {...props} />
           <Card {...props} />
         </View>
+
+        <Modal
+          isVisible={modal}
+          style={styles.bottomModal}
+          deviceHeight={deviceHeight}
+          swipeDirection={["down"]}
+          onSwipeComplete={() => setModal(false)}
+        >
+          <View style={styles.modal}>
+            <View style={styles.modalHeader}>
+              <TouchableOpacity onPress={() => setModal(false)}>
+                <Icon name="close" size={24} />
+              </TouchableOpacity>
+              <Spacing marginRight={10} />
+              <Title isBold fontSize={16}>
+                Select menu time
+              </Title>
+            </View>
+            <View style={styles.modalContent}>
+              <Column alignItems="center">
+                <Radio selected />
+                <Spacing marginRight={15} />
+                <Column isColumn style={styles.list}>
+                  <Column alignItems="center">
+                    <Title isBold>Lunch</Title>
+                    <Spacing marginRight={15} />
+                    <Caption>11:00 am - 2:00 pm</Caption>
+                  </Column>
+                  <Spacing marginRight={30} />
+                  <Title isBold size={12} color={Colors.info}>
+                    Order for Tu, May 2
+                  </Title>
+                </Column>
+              </Column>
+
+              <Column alignItems="center">
+                <Radio />
+                <Spacing marginRight={15} />
+                <Column isColumn style={styles.list}>
+                  <Column alignItems="center">
+                    <Title isBold>Dinner</Title>
+                    <Spacing marginRight={15} />
+                    <Caption>11:00 am - 2:00 pm</Caption>
+                  </Column>
+                  <Title isBold size={12} color={Colors.info}>
+                    Order for Tu, May 2
+                  </Title>
+                </Column>
+              </Column>
+            </View>
+          </View>
+        </Modal>
       </Animated.ScrollView>
 
       <Animated.View

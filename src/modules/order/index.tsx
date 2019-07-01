@@ -19,6 +19,8 @@ import { Colors } from "styles";
 
 function Card(props: any) {
   const [modal, setModal] = React.useState(false);
+  const [cancel, setCancel] = React.useState(false);
+
   const deviceHeight = Math.max(
     Dimensions.get("window").height,
     Dimensions.get("screen").height
@@ -26,6 +28,41 @@ function Card(props: any) {
 
   return (
     <TouchableOpacity style={styles.card} onPress={() => setModal(true)}>
+      <Modal
+        style={styles.modalCancel}
+        isVisible={cancel}
+        onSwipeComplete={() => setCancel(false)}
+        swipeDirection={["down"]}
+        backdropOpacity={0.5}
+        deviceHeight={deviceHeight}
+      >
+        <View style={styles.modalCancelTop}>
+          <Title>Are you sure you want to cancel this order?</Title>
+        </View>
+
+        <View style={styles.modalCancelBottom}>
+          <Column justifyContent="space-between">
+            <Button
+              style={[styles.btnCancel, styles.btnWithBorder]}
+              bgColor={Colors.light}
+            >
+              <Title color={Colors.dark} isBold>
+                Yes
+              </Title>
+            </Button>
+            <Button
+              style={styles.btnCancel}
+              bgColor={Colors.warning}
+              onPress={() => setCancel(false)}
+            >
+              <Title color={Colors.dark} isBold>
+                No
+              </Title>
+            </Button>
+          </Column>
+        </View>
+      </Modal>
+
       <Modal
         isVisible={modal}
         onSwipeComplete={() => setModal(false)}
@@ -143,7 +180,7 @@ function Card(props: any) {
                 $12.00
               </Title>
             </Column>
-            <Button style={styles.btnDefault}>
+            <Button style={styles.btnDefault} onPress={() => setCancel(true)}>
               <Title isBold color={Colors.text}>
                 Cancel Order
               </Title>
@@ -318,6 +355,45 @@ const styles = ScaledSheet.create({
   },
   scrollList: {
     height: "170@vs"
+  },
+
+  modalCancel: {
+    width: "280@s",
+    alignSelf: "center",
+    padding: 15
+  },
+  modalCancelTop: {
+    backgroundColor: Colors.light,
+    height: "100@vs",
+    alignItems: "center",
+    justifyContent: "center",
+    borderTopLeftRadius: 4,
+    borderTopRightRadius: 4,
+    padding: 15,
+    paddingBottom: 0
+  },
+  modalCancelBottom: {
+    padding: 15,
+    paddingTop: 0,
+    backgroundColor: Colors.light
+  },
+  btn: {
+    width: 100
+  },
+  btnCancel: {
+    width: 100,
+    height: 40
+  },
+  btnWithBorder: {
+    borderWidth: 1,
+    borderColor: Colors.background
+  },
+  iconWrapperClose: {
+    position: "absolute",
+    top: 10,
+    left: 15,
+    width: 12,
+    height: 12
   }
 });
 
