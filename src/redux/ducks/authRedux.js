@@ -1,7 +1,7 @@
 import Api from "../../api";
 
 const initialState = {
-  isLoading: true,
+  isLoading: false,
   isLogin: false
 };
 
