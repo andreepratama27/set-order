@@ -8,12 +8,9 @@ import { Spacing } from "commons/ui";
 import { Button } from "commons/button";
 import { Colors } from "styles";
 
-const icon = {
-  facebook: require("../../assets/img/icon-facebook.png"),
-  google: require("../../assets/img/icon-google.png")
-};
+import * as Icon from "assets/icons";
 
-function Login() {
+function Login(props: any) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -47,7 +44,7 @@ function Login() {
       <View>
         <Button bgColor={Colors.facebook}>
           <View style={styles.icon}>
-            <Image source={icon.facebook} />
+            <Image source={Icon.facebook.default} />
           </View>
           <Title isBold color={Colors.light}>
             Continue with Facebook
@@ -58,7 +55,7 @@ function Login() {
 
         <Button bgColor={"#f7f7f7"}>
           <View style={styles.icon}>
-            <Image source={icon.google} />
+            <Image source={Icon.google.default} />
           </View>
           <Title isBold>Continue with Google</Title>
         </Button>
@@ -69,8 +66,9 @@ function Login() {
 
 Login.navigationOptions = {
   headerStyle: {
-    borderBottomWidth: 0,
-    borderBottomColor: "transparent"
+    elevation: 0,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.background
   }
 };
 

@@ -1,52 +1,77 @@
 import React from "react";
 import { View, Image } from "react-native";
+import { connect } from "react-redux";
 
 import { ScaledSheet } from "react-native-size-matters";
 
 import { Title, TitleHeader, Caption } from "commons/text";
-import { Column, List, Spacing } from "commons/ui";
+import { List, Spacing } from "commons/ui";
+import Spinner from "commons/spinner";
 
 import { Colors } from "styles";
 
-function ProfileDetail() {
+import { doLogout } from "redux/ducks/authRedux";
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+const mapDispatchToProps = dispatch => ({
+  logout() {
+    dispatch(doLogout());
+  }
+});
+
+function ProfileDetail(props: any) {
+  logoutAction = () => {
+    props.logout();
+  };
+
+  const { isLoading } = props.auth;
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.avatarWrapper}>
-          <Image
-            source={{ uri: "https://placehold.it/300x300" }}
-            style={styles.avatar}
-          />
+    <>
+      <Spinner isVisible={isLoading} />
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <View style={styles.avatarWrapper}>
+            <Image
+              source={{ uri: "https://placehold.it/300x300" }}
+              style={styles.avatar}
+            />
+          </View>
+
+          <Spacing marginBottom={5} />
+
+          <Title isBold color={Colors.dark}>
+            Andy Luther
+          </Title>
+          <Caption>Andyluther@gmail.com</Caption>
         </View>
 
-        <Spacing marginBottom={5} />
-
-        <Title isBold color={Colors.dark}>
-          Andy Luther
-        </Title>
-        <Caption>Andyluther@gmail.com</Caption>
-      </View>
-
-      <List style={styles.list}>
-        <Caption>Phone number</Caption>
-        <Title>+61 41103222</Title>
-      </List>
-
-      <Spacing marginBottom={15} />
-
-      <List style={styles.list}>
-        <Title>Notification</Title>
-      </List>
-      <List style={styles.list}>
-        <Title>Change password</Title>
-      </List>
-
-      <View style={styles.bottomBtn}>
-        <List style={[styles.list, { alignItems: "center" }]}>
-          <Title color={Colors.danger}>Logout</Title>
+        <List style={styles.list}>
+          <Caption>Phone number</Caption>
+          <Title>+61 41103222</Title>
         </List>
+
+        <Spacing marginBottom={15} />
+
+        <List style={styles.list}>
+          <Title>Notification</Title>
+        </List>
+        <List style={styles.list}>
+          <Title>Change password</Title>
+        </List>
+
+        <View style={styles.bottomBtn}>
+          <List
+            style={[styles.list, { alignItems: "center" }]}
+            onPress={() => logoutAction()}
+          >
+            <Title color={Colors.danger}>Logout</Title>
+          </List>
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
@@ -94,4 +119,7 @@ const styles = ScaledSheet.create({
   }
 });
 
-export default ProfileDetail;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProfileDetail);

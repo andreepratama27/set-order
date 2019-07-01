@@ -1,19 +1,41 @@
 import * as React from "react";
 import { View, SafeAreaView, Text, Image, ImageBackground } from "react-native";
+import { connect } from "react-redux";
 
 import { Title } from "commons/text";
 import { Button } from "commons/button";
 import { Spacing, Column } from "commons/ui";
+import Spinner from "commons/spinner";
 
 import { Colors } from "styles";
 import styles from "./styles";
+
+import { doLogin } from "redux/ducks/authRedux";
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+const mapDispatchToProps = dispatch => ({
+  login() {
+    dispatch(doLogin());
+  }
+});
 
 const bg = require("../../assets/img/bg.png");
 const logo = require("../../assets/img/logo2x.png");
 
 function Landing(props: any) {
+  loginAction = () => {
+    props.login();
+  };
+
+  const { isLoading } = props.auth;
+
   return (
     <SafeAreaView style={styles.full}>
+      <Spinner isVisible={isLoading} />
+
       <ImageBackground source={bg} style={styles.container}>
         <View style={styles.overlay} />
 
@@ -42,10 +64,7 @@ function Landing(props: any) {
         </View>
 
         <View style={styles.bottomWrapper}>
-          <Button
-            bgColor={Colors.warning}
-            onPress={() => props.navigation.navigate("Signin")}
-          >
+          <Button bgColor={Colors.warning} onPress={() => loginAction()}>
             <Title isBold>Browse Restaurant</Title>
           </Button>
 
@@ -82,4 +101,7 @@ Landing.navigationOptions = {
   header: null
 };
 
-export default Landing;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Landing);

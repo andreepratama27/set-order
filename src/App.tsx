@@ -1,17 +1,18 @@
 import React, { Component } from "react";
-import { StatusBar } from "react-native";
-import { Colors } from "styles";
+import { connect } from "react-redux";
 
 import AuthNavigator from "./navigations/auth";
-import GuestNavigator from "./navigations/guest"; //fix module resolver in typescript
+import GuestNavigator from "./navigations/guest";
 
-interface Props {}
-export default class App extends Component<Props> {
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+class App extends Component<any, any> {
   render() {
-    return (
-      <>
-        <AuthNavigator />
-      </>
-    );
+    const { auth } = this.props;
+
+    return <>{auth.isLogin ? <AuthNavigator /> : <GuestNavigator />}</>;
   }
 }
+export default connect(mapStateToProps)(App);
