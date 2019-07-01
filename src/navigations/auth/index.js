@@ -1,25 +1,22 @@
-import React from "react";
-import {
-  createStackNavigator,
-  createBottomTabNavigator
-} from "react-navigation";
-import { createAppContainer } from "@react-navigation/native";
+import React from 'react';
+import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
+import {createAppContainer} from '@react-navigation/native';
 
-import Order from "modules/order";
+import Order from 'modules/order';
 
-import Account from "modules/account";
-import ProfileDetail from "modules/profile-detail";
-import Payment from "modules/payment";
+import Account from 'modules/account';
+import ProfileDetail from 'modules/profile-detail';
+import Payment from 'modules/payment';
 
-import Home from "modules/home";
-import Filter from "modules/filters";
+import Home from 'modules/home';
+import Filter from 'modules/filters';
 
-import RestaurantDetail from "modules/restaurant-detail";
-import FoodDetail from "modules/food-detail";
-import ViewOrder from "modules/view-order";
-import OrderSuccess from "modules/order-success";
+import RestaurantDetail from 'modules/restaurant-detail';
+import FoodDetail from 'modules/food-detail';
+import ViewOrder from 'modules/view-order';
+import OrderSuccess from 'modules/order-success';
 
-import BottomTab from "../BottomTab";
+import BottomTab from '../BottomTab';
 
 const TabStack = createBottomTabNavigator(
   {
@@ -27,41 +24,41 @@ const TabStack = createBottomTabNavigator(
       screen: createStackNavigator(
         {
           Home: {
-            screen: Home
-          }
+            screen: Home,
+          },
         },
         {
           navigationOptions: {
-            header: null
-          }
-        }
-      )
+            header: null,
+          },
+        },
+      ),
     },
     Order: {
       screen: createStackNavigator({
         Order: {
-          screen: Order
-        }
-      })
+          screen: Order,
+        },
+      }),
     },
     Account: {
       screen: createStackNavigator({
         Account: {
-          screen: Account
-        }
-      })
-    }
+          screen: Account,
+        },
+      }),
+    },
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: 'Home',
     navigationOptions: {
-      header: null
+      header: null,
     },
     tabBarOptions: {
-      showLabel: false
+      showLabel: false,
     },
-    tabBarComponent: props => <BottomTab {...props} />
-  }
+    tabBarComponent: props => <BottomTab {...props} />,
+  },
 );
 
 // const AppNavigator = TabStack;
@@ -69,45 +66,45 @@ const AppNavigator = createStackNavigator(
   {
     Root: TabStack,
     ProfileDetail: {
-      screen: ProfileDetail
+      screen: ProfileDetail,
     },
     Payment: {
-      screen: Payment
+      screen: Payment,
     },
     RestaurantDetail: {
       screen: createStackNavigator(
         {
           RestaurantDetail: {
-            screen: RestaurantDetail
+            screen: RestaurantDetail,
           },
 
           FoodDetail: {
-            screen: FoodDetail
+            screen: FoodDetail,
           },
           ViewOrder: {
-            screen: ViewOrder
-          }
+            screen: ViewOrder,
+          },
         },
         {
           navigationOptions: {
-            headerTransparent: true
-          }
-        }
-      )
+            headerTransparent: true,
+          },
+        },
+      ),
     },
     OrderSuccess: {
-      screen: OrderSuccess
+      screen: OrderSuccess,
     },
     Filter: {
-      screen: Filter
-    }
+      screen: Filter,
+    },
   },
   {
-    initialRouteName: "RestaurantDetail",
+    initialRouteName: 'Root',
     navigationOptions: {
-      header: null
-    }
-  }
+      header: null,
+    },
+  },
 );
 
 const AuthNavigator = createAppContainer(AppNavigator);
