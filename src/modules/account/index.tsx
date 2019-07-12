@@ -50,7 +50,9 @@ function Account(props: any) {
           <Column>
             <View style={styles.avatarWrapper}>
               <Image
-                source={{ uri: "https://placehold.it/300x300" }}
+                source={{
+                  uri: "https://randomuser.me/api/portraits/men/89.jpg"
+                }}
                 style={styles.avatar}
               />
             </View>

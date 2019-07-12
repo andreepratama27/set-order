@@ -14,6 +14,7 @@ import Modal from "react-native-modal";
 import { Title, TitleHeader, Caption } from "commons/text";
 import { Button } from "commons/button";
 import { Column, Spacing } from "commons/ui";
+import ProgressiveImage from "commons/progressive-image";
 
 import { Colors } from "styles";
 
@@ -191,8 +192,17 @@ function Card(props: any) {
 
       <Column style={styles.columnTop}>
         <View style={styles.imagesWrapper}>
-          <Image
-            source={{ uri: "https://placehold.it/300x300" }}
+          <ProgressiveImage
+            thumbnailSource={{
+              uri: `https://picsum.photos/id/${Math.floor(
+                Math.random() * 1000
+              )}/50/50`
+            }}
+            source={{
+              uri: `https://picsum.photos/id/${Math.floor(
+                Math.random() * 1000
+              )}/2500/1667`
+            }}
             style={styles.img}
           />
         </View>

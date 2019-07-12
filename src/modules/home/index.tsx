@@ -13,6 +13,7 @@ import StarRating from "react-native-star-rating";
 
 import { Title, TitleHeader, Caption } from "commons/text";
 import { Column, Spacing, List } from "commons/ui";
+import ProgressiveImage from "commons/progressive-image";
 
 import { Colors } from "styles";
 
@@ -29,8 +30,17 @@ function Card(props: any) {
     >
       <Column isColumn>
         <View style={styles.imageWrapper}>
-          <Image
-            source={{ uri: "https://picsum.photos/id/10/2500/1667" }}
+          <ProgressiveImage
+            thumbnailSource={{
+              uri: `https://picsum.photos/id/${Math.floor(
+                Math.random() * 1000
+              )}/50/50`
+            }}
+            source={{
+              uri: `https://picsum.photos/id/${Math.floor(
+                Math.random() * 1000
+              )}/2500/1667`
+            }}
             style={styles.img}
           />
         </View>
