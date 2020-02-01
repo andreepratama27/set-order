@@ -1,29 +1,9 @@
-### Restaurant Section
+# set-order
+A restaurant version for Set Order Apps
 
-* [ ] Landing
-* [ ] Signin
-* [ ] Signup
-* [ ] Orders
-* [ ] Order Detail
-* [ ] Order Detail -> Users Info
-* [ ] History
-* [ ] Settings
-* [ ] Settings -> Edit restaurant
-* [ ] Settings -> Change Password
-
-### Client Section
-
-* [ ] Landing
-* [ ] Signin
-* [ ] Signup
-* [ ] Home pages
-* [ ] Home -> Detail restaurant
-* [ ] Home -> Detail Location
-* [ ] Filter pages
-* [ ] Order pages
-* [ ] Order pages -> list order detail
-* [ ] Profile Pages
-* [ ] Profile Pages -> User detail
-* [ ] Profile Pages -> User detail edit
-* [ ] Profile Pages -> Payment Pages
-* [ ] Help
+# How to install
+- Install npm in your computer [link here](https://www.npmjs.com/get-npm)
+- Change directory into your project and run `npm install`
+- Open emulator or connect into your smartphone
+- Run `npx react-native run-start`
+- Open another terminal, and run `npx react-native run-android`
